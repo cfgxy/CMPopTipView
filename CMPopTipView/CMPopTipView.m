@@ -411,6 +411,9 @@
 	[self removeFromSuperview];
 	highlight = NO;
 	self.targetObject = nil;
+    if (delegate && [delegate respondsToSelector:@selector(popTipViewDidDismissed:)]) {
+        [delegate popTipViewDidDismissed:self];
+    }
 }
 
 - (void)dismissAnimationDidStop:(NSString *)animationID finished:(NSNumber *)finished context:(void *)context {
